@@ -1,8 +1,4 @@
 <?php 
-include 'includes/header.php';
-?>
 
-
-<?php 
-include 'includes/footer.php';
-?>
+header('Location: dashboard.php');
+exit();
