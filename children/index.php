@@ -47,8 +47,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo $row['gender']; ?></td>
                 <td><?php echo $row['teacher_id']; ?></td>
                 <td>
-                    <a href="edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
+                    <a href="children/edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="children/delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>

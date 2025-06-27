@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 require_once '../config/config.php';
 
 // Role-based filter
@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $sql);
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Daily Reports</h1>
     <?php if (in_array($_SESSION['role'], ['admin','headteacher','babysitter'])): ?>
-    <a href="add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
+    <a href="daily_reports/add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>
@@ -54,8 +54,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo htmlspecialchars($row['health_notes']); ?></td>
                 <td>
                     <?php if (in_array($_SESSION['role'], ['admin','headteacher','babysitter'])): ?>
-                    <a href="edit_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
+                    <a href="daily_reports/edit_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="daily_reports/delete_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
                     <?php endif; ?>
                 </td>
             </tr>

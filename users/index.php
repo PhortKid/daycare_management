@@ -35,8 +35,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo ucfirst($row['role']); ?></td>
                 <td><?php echo ucfirst($row['status']); ?></td>
                 <td>
-                    <a href="edit_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                    <a href="users/edit_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="users/delete_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>

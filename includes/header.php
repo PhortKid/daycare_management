@@ -104,7 +104,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                               Username
+                                <?php echo htmlspecialchars($_SESSION['first_name']); ?>
 </span>   
                                 <img class="img-profile rounded-circle"
                                     src="/storage/profile_images/{{auth()->user()->profile_image}}">

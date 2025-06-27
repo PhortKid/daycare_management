@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM children");
 ?>
 <?php include '../includes/header.php'; ?>
-<?php include '../includes/sidebar.php'; ?>
+
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Add Daily Report</h1>
     <?php if ($success): ?><div class="alert alert-success"><?php echo $success; ?></div><?php endif; ?>

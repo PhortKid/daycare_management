@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 require_once '../config/config.php';
 
 // Babysitters see only their certifications
@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Certifications</h1>
-    <a href="add_certification.php" class="btn btn-primary mb-3">Add Certification</a>
+    <a href="certifications/add_certification.php" class="btn btn-primary mb-3">Add Certification</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -38,8 +38,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo $row['issue_date']; ?></td>
                 <td><?php echo $row['expiry_date']; ?></td>
                 <td>
-                    <a href="edit_certification.php?id=<?php echo $row['certification_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_certification.php?id=<?php echo $row['certification_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this certification?');">Delete</a>
+                    <a href="certifications/edit_certification.php?id=<?php echo $row['certification_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="certifications/delete_certification.php?id=<?php echo $row['certification_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this certification?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>

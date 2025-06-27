@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 require_once '../config/config.php';
 
 // Role-based filter
@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $sql);
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Payments</h1>
     <?php if (in_array($_SESSION['role'], ['admin','headteacher'])): ?>
-    <a href="add_payment.php" class="btn btn-primary mb-3">Add Payment</a>
+    <a href="payments/add_payment.php" class="btn btn-primary mb-3">Add Payment</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>
@@ -49,8 +49,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo htmlspecialchars($row['payment_method']); ?></td>
                 <td>
                     <?php if (in_array($_SESSION['role'], ['admin','headteacher'])): ?>
-                    <a href="edit_payment.php?id=<?php echo $row['payment_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_payment.php?id=<?php echo $row['payment_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this payment?');">Delete</a>
+                    <a href="payments/edit_payment.php?id=<?php echo $row['payment_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="payments/delete_payment.php?id=<?php echo $row['payment_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this payment?');">Delete</a>
                     <?php endif; ?>
                 </td>
             </tr>

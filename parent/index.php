@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 require_once '../config/config.php';
 
 // Fetch parents
@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Parent Management</h1>
-    <a href="add_parent.php" class="btn btn-primary mb-3">Add Parent</a>
+    <a href="parent/add_parent.php" class="btn btn-primary mb-3">Add Parent</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -35,8 +35,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo htmlspecialchars($row['phone']); ?></td>
                 <td><?php echo ucfirst($row['status']); ?></td>
                 <td>
-                    <a href="edit_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="delete_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this parent?');">Delete</a>
+                    <a href="parent/edit_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="parent/delete_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this parent?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>

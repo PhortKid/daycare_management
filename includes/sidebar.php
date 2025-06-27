@@ -29,6 +29,14 @@
         </a>
     </li>
 
+     <!-- Children -->
+    <li class="nav-item">
+        <a class="nav-link" href="/parents">
+            <i class="fa fa-baby"></i>
+            <span>Parent</span>
+        </a>
+    </li>
+
     <!-- Children -->
     <li class="nav-item">
         <a class="nav-link" href="/children">
@@ -39,7 +47,7 @@
 
     <!-- Daily Reports -->
     <li class="nav-item">
-        <a class="nav-link" href="daily_reports.php">
+        <a class="nav-link" href="/daily_reports">
             <i class="fas fa-book-medical"></i>
             <span>Daily Reports</span>
         </a>
@@ -47,42 +55,29 @@
 
     <!-- Certifications -->
     <li class="nav-item">
-        <a class="nav-link" href="certifications.php">
+        <a class="nav-link" href="/certifications">
             <i class="fas fa-certificate"></i>
             <span>Certifications</span>
         </a>
     </li>
 
-    <!-- Messages -->
-    <li class="nav-item">
-        <a class="nav-link" href="messages.php">
-            <i class="fas fa-envelope"></i>
-            <span>Messages</span>
-        </a>
-    </li>
-
+   
     <!-- Payments -->
     <hr class="sidebar-divider">
     <div class="sidebar-heading">Finance</div>
 
     <li class="nav-item">
-        <a class="nav-link" href="payments.php">
+        <a class="nav-link" href="/payments">
             <i class="fas fa-money-bill-wave"></i>
             <span>Payments</span>
         </a>
     </li>
 
-    <!-- Daycare Centers -->
-    <li class="nav-item">
-        <a class="nav-link" href="daycare_centers.php">
-            <i class="fas fa-school"></i>
-            <span>Daycare Centers</span>
-        </a>
-    </li>
+    
 
     <!-- Logout -->
     <li class="nav-item">
-        <a class="nav-link" href="logout.php">
+        <a class="nav-link" href="/logout.php">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span>
         </a>

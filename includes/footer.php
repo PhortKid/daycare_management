@@ -3,13 +3,13 @@
 
         </div>
         <!-- End -->
-                <footer class="sticky-footer bg-white">
+               <?php /* <footer class="sticky-footer bg-white fixed-bottom">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span><a href="#">Developed by NexGenTz</a> </span>
                         </div>
                     </div>
-                </footer>
+                </footer> */  ?>
                 <!-- End of Footer -->
     
             </div>
