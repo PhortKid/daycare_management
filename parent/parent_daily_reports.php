@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'parent') {
 }
 require_once '../config/config.php';
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 
 $parent_id = intval($_SESSION['user_id']);
 $sql = "SELECT dr.*, c.first_name AS child_first, c.last_name AS child_last, u.first_name AS babysitter_first, u.last_name AS babysitter_last
