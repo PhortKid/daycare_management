@@ -42,9 +42,9 @@
                             </button>
                         </form>
                         <div class="text-center mt-3">
-                            <small class="text-muted">
+                          <!--  <small class="text-muted ">
                                 Demo credentials: admin@daycare.com / password123
-                            </small>
+                            </small>-->
                         </div>
                     </div>
                 </div>
