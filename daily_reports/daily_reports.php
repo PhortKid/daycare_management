@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+
 require_once '../config/config.php';
 
 $where = '';
