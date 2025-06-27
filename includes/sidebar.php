@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:black !important;">
 
     <!-- Sidebar - Brand -->
@@ -17,72 +20,82 @@
             <span>Dashboard</span>
         </a>
     </li>
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'parent'): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="/parent/parent_daily_reports.php">
+                <i class="fas fa-book-medical"></i>
+                <span>My Child Daily Reports</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout.php">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    <?php else: ?>
+        <!-- Users -->
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">User Management</div>
 
-    <!-- Users -->
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">User Management</div>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">
+                <i class="fas fa-users"></i>
+                <span>All Users</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/users">
-            <i class="fas fa-users"></i>
-            <span>All Users</span>
-        </a>
-    </li>
+         <!-- Children -->
+        <li class="nav-item">
+            <a class="nav-link" href="/parent">
+                <i class="fa fa-baby"></i>
+                <span>Parent</span>
+            </a>
+        </li>
 
-     <!-- Children -->
-    <li class="nav-item">
-        <a class="nav-link" href="/parent">
-            <i class="fa fa-baby"></i>
-            <span>Parent</span>
-        </a>
-    </li>
+        <!-- Children -->
+        <li class="nav-item">
+            <a class="nav-link" href="/children">
+                <i class="fa fa-baby"></i>
+                <span>Children</span>
+            </a>
+        </li>
 
-    <!-- Children -->
-    <li class="nav-item">
-        <a class="nav-link" href="/children">
-            <i class="fa fa-baby"></i>
-            <span>Children</span>
-        </a>
-    </li>
+        <!-- Daily Reports -->
+        <li class="nav-item">
+            <a class="nav-link" href="/daily_reports">
+                <i class="fas fa-book-medical"></i>
+                <span>Daily Reports</span>
+            </a>
+        </li>
 
-    <!-- Daily Reports -->
-    <li class="nav-item">
-        <a class="nav-link" href="/daily_reports">
-            <i class="fas fa-book-medical"></i>
-            <span>Daily Reports</span>
-        </a>
-    </li>
+        <!-- Certifications -->
+        <li class="nav-item">
+            <a class="nav-link" href="/certifications">
+                <i class="fas fa-certificate"></i>
+                <span>Certifications</span>
+            </a>
+        </li>
 
-    <!-- Certifications -->
-    <li class="nav-item">
-        <a class="nav-link" href="/certifications">
-            <i class="fas fa-certificate"></i>
-            <span>Certifications</span>
-        </a>
-    </li>
+       
+        <!-- Payments -->
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">Finance</div>
 
-   
-    <!-- Payments -->
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">Finance</div>
+        <li class="nav-item">
+            <a class="nav-link" href="/payments">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Payments</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/payments">
-            <i class="fas fa-money-bill-wave"></i>
-            <span>Payments</span>
-        </a>
-    </li>
-
-    
-
-    <!-- Logout -->
-    <li class="nav-item">
-        <a class="nav-link" href="/logout.php">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-        </a>
-    </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="/logout.php">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    <?php endif; ?>
     <!-- Sidebar Toggler -->
     <hr class="sidebar-divider d-none d-md-block">
     <div class="text-center d-none d-md-inline">
