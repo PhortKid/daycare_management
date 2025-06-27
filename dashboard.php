@@ -9,6 +9,7 @@ include 'includes/header.php';
 
 ?>
 <div class="container-fluid">
+    <a href="change_password.php" class="btn btn-warning mb-3">Change Password</a>
     <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
     <p>Welcome, <?php echo htmlspecialchars($_SESSION['first_name']); ?>!</p>
     <!-- Add dashboard widgets or stats here -->
