@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:black !important;">
 
     <!-- Sidebar - Brand -->
@@ -31,6 +33,19 @@
                 <span>Logout</span>
             </a>
         </li>
+    <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'babysitter'): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="/daily_reports/daily_reports.php">
+                <i class="fas fa-book-medical"></i>
+                <span>My Assigned Children & Daily Reports</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout.php">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
     <?php else: ?>
         <!-- Users -->
         <hr class="sidebar-divider">
@@ -43,7 +58,7 @@
             </a>
         </li>
 
-         <!-- Children -->
+        <!-- Children -->
         <li class="nav-item">
             <a class="nav-link" href="/parent">
                 <i class="fa fa-baby"></i>
