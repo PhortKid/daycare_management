@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">User Management</h1>
-    <a href="add_user.php" class="btn btn-primary mb-3">Add User</a>
+    <a href="/users/add_user.php" class="btn btn-primary mb-3">Add User</a>
     <table class="table table-bordered">
         <thead>
             <tr>
