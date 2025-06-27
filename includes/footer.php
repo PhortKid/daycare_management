@@ -62,29 +62,29 @@
      
     
         <!-- Bootstrap core JavaScript-->
-        <script src="dashboard_assets/vendor/jquery/jquery.min.js"></script>
-        <script src="dashboard_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/dashboard_assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/dashboard_assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
         <!-- Core plugin JavaScript-->
-        <script src="dashboard_assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/dashboard_assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     
         <!-- Custom scripts for all pages-->
-        <script src="dashboard_assets/js/sb-admin-2.min.js"></script>
+        <script src="/dashboard_assets/js/sb-admin-2.min.js"></script>
     
         <!-- Page level plugins -->
-        <script src="dashboard_assets/vendor/chart.js/Chart.min.js"></script>
+        <script src="/dashboard_assets/vendor/chart.js/Chart.min.js"></script>
     
         <!-- Page level custom scripts -->
-        <script src="dashboard_assets/js/demo/chart-area-demo.js"></script>
-        <script src="dashboard_assets/js/demo/chart-pie-demo.js"></script>
+        <script src="/dashboard_assets/js/demo/chart-area-demo.js"></script>
+        <script src="/dashboard_assets/js/demo/chart-pie-demo.js"></script>
 
-        <script src="dashboard_assets/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="dashboard_assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/dashboard_assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/dashboard_assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="dashboard_assets/js/demo/datatables-demo.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="ckeditor.js"></script>
+    <script src="/dashboard_assets/js/demo/datatables-demo.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/ckeditor.js"></script>
     <script>
         ClassicEditor.create( document.querySelector( '#writepost' ) )
             .catch( error => {
@@ -92,8 +92,8 @@
             } );
     </script>
 
-<script src="chosen/chosen.jquery.min.js"></script>
-<script src="chosen/popper.min.js"></script>
+<script src="/chosen/chosen.jquery.min.js"></script>
+<script src="/chosen/popper.min.js"></script>
          <script>
             $(document).ready(function() {
                 $('.chosen-select').chosen({

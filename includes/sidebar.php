@@ -31,7 +31,7 @@
 
      <!-- Children -->
     <li class="nav-item">
-        <a class="nav-link" href="/parents">
+        <a class="nav-link" href="/parent">
             <i class="fa fa-baby"></i>
             <span>Parent</span>
         </a>

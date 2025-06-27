@@ -4,9 +4,11 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     header('Location: ../login.php');
     exit();
 }
-include '../includes/header.php';
 
 require_once '../config/config.php';
+include '../includes/header.php';
+
+
 
 // Fetch parents
 $sql = "SELECT * FROM users WHERE role='parent'";
