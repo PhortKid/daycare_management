@@ -51,7 +51,7 @@ if ($_POST) {
                             </div>
                         <?php endif; ?>
                         <h4 class="text-center mb-4">Sign In</h4>
-                        <form method="POST" action="login_logic.php">
+                        <form method="POST" action="">
                             <div class="mb-3">
                                 <label for="email" class="form-label">
                                     <i class="fas fa-envelope"></i> Email Address
