@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
     exit();
 }
 include '../includes/header.php';
-include '../includes/sidebar.php';
+// include '../includes/sidebar.php';
 require_once '../config/config.php';
 
 // Fetch children (admins/headteachers see all, parents see their own, babysitters see assigned)
@@ -50,6 +50,7 @@ $result = mysqli_query($conn, $sql);
                     <a href="edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
                     <a href="delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
                 </td>
+
             </tr>
             <?php endwhile; ?>
         </tbody>

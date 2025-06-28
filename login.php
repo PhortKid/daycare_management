@@ -41,7 +41,7 @@ if ($_POST) {
             <div class="col-md-6 col-lg-5">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white text-center">
-                        <h2 class="mb-0"><i class="fas fa-star"></i> Little Stars Daycare</h2>
+                        <h2>Lunga Daycare</h2>
                         <small>Management System</small>
                     </div>
                     <div class="card-body">
@@ -65,7 +65,7 @@ if ($_POST) {
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">
-                                <i class="fas fa-sign-in-alt"></i> Sign In
+                                <i class="fas fa-sign-in-alt"></i> login
                             </button>
                         </form>
                         <div class="text-center mt-3">
