@@ -73,9 +73,13 @@ $result = $stmt->get_result();
                 <td><?php echo ucfirst($row['role']); ?></td>
                 <td><?php echo ucfirst($row['status']); ?></td>
                 <td>
-                    <a href="/users/edit_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="/users/delete_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                    <a href="/users/reset_password.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-warning" onclick="return confirm('Reset password for this user to Mpya@2025?');">Reset Password</a>
+                    <?php if ($_SESSION['role'] === 'admin'): ?>
+                        <a href="/users/edit_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                        <a href="/users/delete_user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                        <a href="/users/reset_password.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-warning" onclick="return confirm('Reset password for this user to Mpya@2025?');">Reset Password</a>
+                    <?php else: ?>
+                        <span class="text-muted">View Only</span>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endwhile; ?>

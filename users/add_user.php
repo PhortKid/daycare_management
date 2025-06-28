@@ -61,7 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-md-3 mb-3">
                 <label>Role</label>
                 <select name="role" class="form-control" required>
-                    <option value="admin">Admin</option>
+                    <?php if ($_SESSION['role'] === 'admin'): ?>
+                        <option value="admin">Admin</option>
+                    <?php endif; ?>
+                 
                     <option value="headteacher">Headteacher</option>
                     <option value="babysitter">Babysitter</option>
                     <option value="parent">Parent</option>
