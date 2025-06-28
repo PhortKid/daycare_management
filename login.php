@@ -11,7 +11,7 @@ if ($_POST) {
     $stmt->execute([$email]);
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
-        if ($user['status'] !== 'active') {
+        if ($user['status'] !== 'active'  && $user['status'] !== 'pending') {
             $login_error = "Your account is not active. Please contact the administrator.";
         } else {
             $_SESSION['user_id'] = $user['user_id'];
@@ -71,6 +71,9 @@ if ($_POST) {
                                 <i class="fas fa-sign-in-alt"></i> login
                             </button>
                         </form>
+                        <div class="text-center mt-3">
+                            <a href="forgot_password.php">Forgot Password?</a>
+                        </div>
                         <div class="text-center mt-3">
                           <!--  <small class="text-muted ">
                                 Demo credentials: admin@daycare.com / password123
