@@ -12,13 +12,13 @@ if (isset($_GET['id'])) {
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 'i', $payment_id);
     if (mysqli_stmt_execute($stmt)) {
-        header('Location: payments.php?msg=deleted');
+        header('Location: index.php?msg=deleted');
         exit();
     } else {
-        header('Location: payments.php?msg=error');
+        header('Location: index.php?msg=error');
         exit();
     }
 } else {
-    header('Location: payments.php');
+    header('Location: index.php');
     exit();
 }
