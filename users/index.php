@@ -27,9 +27,11 @@ $result = mysqli_query($conn, $sql);
             </tr>
         </thead>
         <tbody>
-            <?php while($row = mysqli_fetch_assoc($result)): ?>
+            <?php 
+            $auto_id = 1;
+            while($row = mysqli_fetch_assoc($result)): ?>
             <tr>
-                <td><?php echo $row['user_id']; ?></td>
+                <td><?php echo $auto_id++; ?></td>
                 <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
                 <td><?php echo htmlspecialchars($row['email']); ?></td>
                 <td><?php echo ucfirst($row['role']); ?></td>
