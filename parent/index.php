@@ -16,7 +16,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Parent Management</h1>
-    <a href="parent/add_parent.php" class="btn btn-primary mb-3">Add Parent</a>
+    <a href="/parent/add_parent.php" class="btn btn-primary mb-3">Add Parent</a>
     <table class="table table-bordered">
         <thead>
             <tr>

@@ -19,7 +19,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Certifications</h1>
-    <a href="certifications/add_certification.php" class="btn btn-primary mb-3">Add Certification</a>
+    <a href="/certifications/add_certification.php" class="btn btn-primary mb-3">Add Certification</a>
     <table class="table table-bordered">
         <thead>
             <tr>

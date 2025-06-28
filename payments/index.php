@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $sql);
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Payments</h1>
     <?php if (in_array($_SESSION['role'], ['admin','headteacher'])): ?>
-    <a href="payments/add_payment.php" class="btn btn-primary mb-3">Add Payment</a>
+    <a href="/payments/add_payment.php" class="btn btn-primary mb-3">Add Payment</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>
