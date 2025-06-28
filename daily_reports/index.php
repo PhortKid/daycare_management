@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $sql);
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Daily Reports</h1>
     <?php if (in_array($_SESSION['role'], ['admin','headteacher','babysitter'])): ?>
-    <a href="daily_reports/add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
+    <a href="/daily_reports/add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>

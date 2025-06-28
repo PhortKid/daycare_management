@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $sql);
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Children Management</h1>
     <?php if (in_array($_SESSION['role'], ['admin','headteacher','parent'])): ?>
-    <a href="children/add_child.php" class="btn btn-primary mb-3">Add Child</a>
+    <a href="/children/add_child.php" class="btn btn-primary mb-3">Add Child</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>
