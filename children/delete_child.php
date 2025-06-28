@@ -12,13 +12,13 @@ if (isset($_GET['id'])) {
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 'i', $child_id);
     if (mysqli_stmt_execute($stmt)) {
-        header('Location: children.php?msg=deleted');
+        header('Location: index.php?msg=deleted');
         exit();
     } else {
-        header('Location: children.php?msg=error');
+        header('Location: index.php?msg=error');
         exit();
     }
 } else {
-    header('Location: children.php');
+    header('Location: index.php');
     exit();
 }

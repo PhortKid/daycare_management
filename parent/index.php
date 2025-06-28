@@ -37,8 +37,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo htmlspecialchars($row['phone']); ?></td>
                 <td><?php echo ucfirst($row['status']); ?></td>
                 <td>
-                    <a href="parent/edit_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="parent/delete_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this parent?');">Delete</a>
+                    <a href="/parent/edit_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="/parent/delete_parent.php?id=<?php echo $row['user_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this parent?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>

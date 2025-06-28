@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headt
 require_once '../config/config.php';
 
 if (!isset($_GET['id'])) {
-    header('Location: children.php');
+    header('Location: index.php');
     exit();
 }
 $child_id = intval($_GET['id']);
@@ -41,7 +41,7 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $child = mysqli_fetch_assoc($result);
 if (!$child) {
-    header('Location: children.php');
+    header('Location: index.php');
     exit();
 }
 $parents = mysqli_query($conn, "SELECT user_id, first_name, last_name FROM users WHERE role='parent'");
@@ -114,7 +114,7 @@ $teachers = mysqli_query($conn, "SELECT user_id, first_name, last_name FROM user
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Update Child</button>
-        <a href="children.php" class="btn btn-secondary">Back</a>
+        <a href="index.php" class="btn btn-secondary">Back</a>
     </form>
 </div>
 <?php include '../includes/footer.php'; ?>
