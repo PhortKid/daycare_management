@@ -1,20 +1,50 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headteacher'])) {
-    header('Location: login.php');
+    header('Location: ../login.php');
     exit();
 }
+require_once '../config/config.php';
 include '../includes/header.php';
 
-require_once '../config/config.php';
+// Handle filter
+$filter_role = isset($_GET['role']) ? $_GET['role'] : '';
+$where = '';
+$params = [];
+if ($filter_role && in_array($filter_role, ['admin','headteacher','babysitter','parent'])) {
+    $where = "WHERE role = ?";
+    $params[] = $filter_role;
+}
 
-// Fetch users
-$sql = "SELECT * FROM users";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM users $where ORDER BY user_id DESC";
+$stmt = $conn->prepare($sql);
+if ($params) {
+    $stmt->bind_param('s', $params[0]);
+}
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
+
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">User Management</h1>
     <a href="/users/add_user.php" class="btn btn-primary mb-3">Add User</a>
+    <form method="get" class="mb-3">
+        <div class="row g-2 align-items-center">
+            <div class="col-auto">
+                <select name="role" class="form-select">
+                    <option value="">-- Filter by Role --</option>
+                    <option value="admin" <?php if($filter_role=='admin') echo 'selected'; ?>>Admin</option>
+                    <option value="headteacher" <?php if($filter_role=='headteacher') echo 'selected'; ?>>Headteacher</option>
+                    <option value="babysitter" <?php if($filter_role=='babysitter') echo 'selected'; ?>>Babysitter</option>
+                    <option value="parent" <?php if($filter_role=='parent') echo 'selected'; ?>>Parent</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-secondary">Filter</button>
+                <a href="index.php" class="btn btn-light">Reset</a>
+            </div>
+        </div>
+    </form>
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success"><?php echo $_SESSION['success']; unset($_SESSION['success']); ?></div>
     <?php endif; ?>
@@ -24,7 +54,7 @@ $result = mysqli_query($conn, $sql);
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
@@ -35,7 +65,7 @@ $result = mysqli_query($conn, $sql);
         <tbody>
             <?php 
             $auto_id = 1;
-            while($row = mysqli_fetch_assoc($result)): ?>
+            while($row = $result->fetch_assoc()): ?>
             <tr>
                 <td><?php echo $auto_id++; ?></td>
                 <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
