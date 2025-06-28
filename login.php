@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -12,14 +11,18 @@ if ($_POST) {
     $stmt->execute([$email]);
     $user = $stmt->fetch();
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['first_name'] = $user['first_name'];
-        $_SESSION['last_name'] = $user['last_name'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['role'] = $user['role'];
-        $_SESSION['logged_in'] = true;
-        header("Location: dashboard.php");
-        exit();
+        if ($user['status'] !== 'active') {
+            $login_error = "Your account is not active. Please contact the administrator.";
+        } else {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['logged_in'] = true;
+            header("Location: dashboard.php");
+            exit();
+        }
     } else {
         $login_error = "Invalid email or password!";
     }
