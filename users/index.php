@@ -31,7 +31,7 @@ $result = $stmt->get_result();
     <form method="get" class="mb-3">
         <div class="row g-2 align-items-center">
             <div class="col-auto">
-                <select name="role" class="form-select">
+                <select name="role"  class="form-control">
                     <option value="">-- Filter by Role --</option>
                     <option value="admin" <?php if($filter_role=='admin') echo 'selected'; ?>>Admin</option>
                     <option value="headteacher" <?php if($filter_role=='headteacher') echo 'selected'; ?>>Headteacher</option>
