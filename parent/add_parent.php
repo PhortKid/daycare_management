@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Add Parent</button>
-        <a href="parent.php" class="btn btn-secondary">Back</a>
+        <a href="index.php" class="btn btn-secondary">Back</a>
     </form>
 </div>
 <?php include '../includes/footer.php'; ?>

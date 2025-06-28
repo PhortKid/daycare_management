@@ -88,7 +88,7 @@ $children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM chi
             <input type="text" name="invoice_number" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Add Payment</button>
-        <a href="payments.php" class="btn btn-secondary">Back</a>
+        <a href="index.php" class="btn btn-secondary">Back</a>
     </form>
 </div>
 <?php include '../includes/footer.php'; ?>
