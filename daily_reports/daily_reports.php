@@ -25,12 +25,12 @@ $result = $pdo->query($sql);
     <h1 class="h3 mb-4 text-gray-800">Daily Reports</h1>
     <?php if ($_SESSION['role'] === 'babysitter'): ?>
         <a href="add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
-        <h5>My Assigned Children:</h5>
+      <!--  <h5>My Assigned Children:</h5>
         <ul>
             <?php foreach($children_result as $child): ?>
                 <li><?php echo htmlspecialchars($child['first_name'] . ' ' . $child['last_name']); ?></li>
             <?php endforeach; ?>
-        </ul>
+        </ul>-->
     <?php elseif (in_array($_SESSION['role'], ['admin','headteacher'])): ?>
         <a href="add_daily_report.php" class="btn btn-primary mb-3">Add Daily Report</a>
     <?php endif; ?>
