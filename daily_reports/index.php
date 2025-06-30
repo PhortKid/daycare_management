@@ -54,8 +54,8 @@ $result = mysqli_query($conn, $sql);
                 <td><?php echo htmlspecialchars($row['health_notes']); ?></td>
                 <td>
                     <?php if (in_array($_SESSION['role'], ['admin','headteacher','babysitter'])): ?>
-                    <a href="daily_reports/edit_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="daily_reports/delete_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
+                    <a href="/daily_reports/edit_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="/daily_reports/delete_daily_report.php?id=<?php echo $row['report_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this report?');">Delete</a>
                     <?php endif; ?>
                 </td>
             </tr>

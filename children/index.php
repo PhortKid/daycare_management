@@ -36,19 +36,20 @@ $result = mysqli_query($conn, $sql);
                 <th>Teacher</th>
                 <th>Actions</th>
             </tr>
-        </thead>
+        </thead>  
         <tbody>
-            <?php while($row = mysqli_fetch_assoc($result)): ?>
+            <?php  $auto_id = 1; 
+            while($row = mysqli_fetch_assoc($result)): ?>
             <tr>
-                <td><?php echo $row['child_id']; ?></td>
+              <td><?php echo $auto_id++; ?></td>
                 <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
                 <td><?php echo htmlspecialchars($row['parent_first'] . ' ' . $row['parent_last']); ?></td>
                 <td><?php echo $row['date_of_birth']; ?></td>
                 <td><?php echo $row['gender']; ?></td>
                 <td><?php echo $row['teacher_id']; ?></td>
                 <td>
-                    <a href="children/edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="children/delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
+                    <a href="/children/edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
+                    <a href="/children/delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
                 </td>
             </tr>
             <?php endwhile; ?>
