@@ -53,6 +53,24 @@ include '../includes/header.php';
         <tr><th>Medical Notes</th><td><?php echo htmlspecialchars($child['medical_notes']); ?></td></tr>
         <tr><th>Allergies</th><td><?php echo htmlspecialchars($child['allergies']); ?></td></tr>
         <tr><th>Enrollment Date</th><td><?php echo htmlspecialchars($child['enrollment_date']); ?></td></tr>
+        <tr><th>Parent Name</th><td><?php echo htmlspecialchars($child['parent_fname'] . ' ' . $child['parent_lname']); ?></td></tr>
+        <tr><th>Parent Phone</th>
+            <td>
+                <?php
+                // Fetch parent phone
+                $parent_phone = '';
+                if (!empty($child['parent_fname']) && !empty($child['parent_lname'])) {
+                    $parent_stmt = $pdo->prepare("SELECT phone FROM users WHERE first_name = ? AND last_name = ? LIMIT 1");
+                    $parent_stmt->execute([$child['parent_fname'], $child['parent_lname']]);
+                    $parent = $parent_stmt->fetch();
+                    if ($parent) {
+                        $parent_phone = $parent['phone'];
+                    }
+                }
+                echo htmlspecialchars($parent_phone);
+                ?>
+            </td>
+        </tr>
     </table>
     <a href="index.php" class="btn btn-secondary">Back</a>
 </div>
