@@ -113,7 +113,7 @@ $children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM chi
             <textarea name="health_notes" class="form-control"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Add Report</button>
-        <a href="daily_reports.php" class="btn btn-secondary">Back</a>
+        <a href="index.php" class="btn btn-secondary">Back</a>
     </form>
 </div>
 <?php include '../includes/footer.php'; ?>

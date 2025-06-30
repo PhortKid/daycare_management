@@ -61,7 +61,7 @@ $babysitters = mysqli_query($conn, "SELECT user_id, first_name, last_name FROM u
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Add Certification</button>
-        <a href="certifications.php" class="btn btn-secondary">Back</a>
+        <a href="index.php" class="btn btn-secondary">Back</a>
     </form>
 </div>
 <?php include '../includes/footer.php'; ?>
