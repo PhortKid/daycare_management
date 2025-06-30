@@ -23,7 +23,7 @@ if ($_SESSION['role'] === 'babysitter') {
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Children Management</h1>
-    <?php if ($_SESSION['role'] !== 'babysitter'): ?>
+    <?php if ($_SESSION['role'] !== 'parent'): ?>
         <a href="add_child.php" class="btn btn-primary mb-3">Add Child</a>
     <?php endif; ?>
     <table class="table table-bordered">
@@ -65,7 +65,7 @@ if ($_SESSION['role'] === 'babysitter') {
                 </td>
                 <td>
                     <a href="view_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">View</a>
-                    <?php if ($_SESSION['role'] !== 'babysitter'): ?>
+                    <?php if ($_SESSION['role'] !== 'parent' && $_SESSION['role'] !== 'babysitter'): ?>
                         <a href="edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                         <a href="delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this child?');">Delete</a>
                     <?php endif; ?>
