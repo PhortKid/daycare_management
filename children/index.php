@@ -1,55 +1,74 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['admin','headteacher','babysitter','parent'])) {
+if (!isset($_SESSION['user_id'])) {
     header('Location: ../login.php');
     exit();
 }
+require_once '../config/config.php';
 include '../includes/header.php';
 
-require_once '../config/config.php';
-
-// Fetch children (admins/headteachers see all, parents see their own, babysitters see assigned)
-$where = '';
-if ($_SESSION['role'] === 'parent') {
-    $parent_id = intval($_SESSION['user_id']);
-    $where = "WHERE c.parent_id = $parent_id";
-} elseif ($_SESSION['role'] === 'babysitter') {
-    $babysitter_id = intval($_SESSION['user_id']);
-    $where = "WHERE c.teacher_id = $babysitter_id";
+// Fetch children with babysitter name
+$sql = "SELECT c.*, u.first_name AS babysitter_fname, u.last_name AS babysitter_lname 
+        FROM children c 
+        LEFT JOIN users u ON c.teacher_id = u.user_id";
+if ($_SESSION['role'] === 'babysitter') {
+    // Babysitter sees only their assigned children
+    $sql .= " WHERE c.teacher_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$_SESSION['user_id']]);
+} else {
+    $stmt = $pdo->query($sql);
 }
-$sql = "SELECT c.*, u.first_name AS parent_first, u.last_name AS parent_last FROM children c JOIN users u ON c.parent_id = u.user_id $where";
-$result = mysqli_query($conn, $sql);
+
 ?>
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Children Management</h1>
-    <?php if (in_array($_SESSION['role'], ['admin','headteacher','parent'])): ?>
-    <a href="/children/add_child.php" class="btn btn-primary mb-3">Add Child</a>
+    <?php if ($_SESSION['role'] !== 'babysitter'): ?>
+        <a href="add_child.php" class="btn btn-primary mb-3">Add Child</a>
     <?php endif; ?>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>#</th>
+                <th>Child Name</th>
                 <th>Parent</th>
                 <th>Date of Birth</th>
-                <th>Gender</th>
                 <th>Babysitter</th>
                 <th>Actions</th>
             </tr>
-        </thead>  
+        </thead>
         <tbody>
-            <?php  $auto_id = 1; 
-            while($row = mysqli_fetch_assoc($result)): ?>
+            <?php 
+            $auto_id = 1;
+            while($row = $stmt->fetch()): ?>
             <tr>
-              <td><?php echo $auto_id++; ?></td>
+                <td><?php echo $auto_id++; ?></td>
                 <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
-                <td><?php echo htmlspecialchars($row['parent_first'] . ' ' . $row['parent_last']); ?></td>
-                <td><?php echo $row['date_of_birth']; ?></td>
-                <td><?php echo $row['gender']; ?></td>
-                <td><?php echo $row['teacher_id']; ?></td>
                 <td>
-                    <a href="/children/edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">Edit</a>
-                    <a href="/children/delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this child?');">Delete</a>
+                    <?php
+                    // Fetch parent name
+                    $parent = $pdo->prepare("SELECT first_name, last_name FROM users WHERE user_id = ?");
+                    $parent->execute([$row['parent_id']]);
+                    $p = $parent->fetch();
+                    echo htmlspecialchars($p['first_name'] . ' ' . $p['last_name']);
+                    ?>
+                </td>
+                <td><?php echo htmlspecialchars($row['date_of_birth']); ?></td>
+                <td>
+                    <?php
+                    if ($row['babysitter_fname']) {
+                        echo htmlspecialchars($row['babysitter_fname'] . ' ' . $row['babysitter_lname']);
+                    } else {
+                        echo '<span class="text-muted">N/A</span>';
+                    }
+                    ?>
+                </td>
+                <td>
+                    <a href="view_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-info">View</a>
+                    <?php if ($_SESSION['role'] !== 'babysitter'): ?>
+                        <a href="edit_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="delete_child.php?id=<?php echo $row['child_id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this child?');">Delete</a>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endwhile; ?>
