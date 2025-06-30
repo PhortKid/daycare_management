@@ -19,9 +19,21 @@
     </li>
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'parent'): ?>
         <li class="nav-item">
+            <a class="nav-link" href="/dashboard.php">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="/parent/parent_daily_reports.php">
                 <i class="fas fa-book-medical"></i>
                 <span>My Child Daily Reports</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/children">
+                <i class="fa fa-baby"></i>
+                <span>My Child Info</span>
             </a>
         </li>
         <li class="nav-item">

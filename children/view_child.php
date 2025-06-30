@@ -13,8 +13,15 @@ if (!isset($_GET['id'])) {
 
 $child_id = intval($_GET['id']);
 
-// Only allow babysitter to view their assigned children
-if ($_SESSION['role'] === 'babysitter') {
+// Only allow parent to view their own child's details
+if ($_SESSION['role'] === 'parent') {
+    $sql = "SELECT c.*, u.first_name AS parent_fname, u.last_name AS parent_lname
+            FROM children c
+            JOIN users u ON c.parent_id = u.user_id
+            WHERE c.child_id = ? AND c.parent_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$child_id, $_SESSION['user_id']]);
+} elseif ($_SESSION['role'] === 'babysitter') {
     $sql = "SELECT c.*, u.first_name AS parent_fname, u.last_name AS parent_lname
             FROM children c
             JOIN users u ON c.parent_id = u.user_id
@@ -43,7 +50,6 @@ include '../includes/header.php';
         <tr><th>Name</th><td><?php echo htmlspecialchars($child['first_name'] . ' ' . $child['last_name']); ?></td></tr>
         <tr><th>Date of Birth</th><td><?php echo htmlspecialchars($child['date_of_birth']); ?></td></tr>
         <tr><th>Gender</th><td><?php echo htmlspecialchars($child['gender']); ?></td></tr>
-        <tr><th>Parent</th><td><?php echo htmlspecialchars($child['parent_fname'] . ' ' . $child['parent_lname']); ?></td></tr>
         <tr><th>Medical Notes</th><td><?php echo htmlspecialchars($child['medical_notes']); ?></td></tr>
         <tr><th>Allergies</th><td><?php echo htmlspecialchars($child['allergies']); ?></td></tr>
         <tr><th>Enrollment Date</th><td><?php echo htmlspecialchars($child['enrollment_date']); ?></td></tr>
