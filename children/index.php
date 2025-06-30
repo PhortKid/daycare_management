@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $sql);
                 <th>Parent</th>
                 <th>Date of Birth</th>
                 <th>Gender</th>
-                <th>Teacher</th>
+                <th>Babysitter</th>
                 <th>Actions</th>
             </tr>
         </thead>  
