@@ -55,7 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 // Fetch children for dropdown
-$children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM children");
+if ($_SESSION['role'] === 'babysitter') {
+    // Babysitter: only assigned children
+    $babysitter_id = $_SESSION['user_id'];
+    $children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM children WHERE teacher_id = $babysitter_id");
+} else {
+    // Admin/Headteacher: all children
+    $children = mysqli_query($conn, "SELECT child_id, first_name, last_name FROM children");
+}
 ?>
 <?php include '../includes/header.php'; ?>
 

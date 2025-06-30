@@ -1,4 +1,3 @@
-
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:black !important;">
 
     <!-- Sidebar - Brand -->
@@ -36,6 +35,12 @@
             <a class="nav-link" href="/daily_reports/daily_reports.php">
                 <i class="fas fa-book-medical"></i>
                 <span>My Assigned Children & Daily Reports</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/children">
+                <i class="fa fa-baby"></i>
+                <span>My Assigned Children</span>
             </a>
         </li>
         <li class="nav-item">
